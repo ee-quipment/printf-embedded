@@ -41,7 +41,7 @@ With `saprintf()` and `vsaprintf()` if memory cannot be allocated that will hold
 the entire string the the buffer pointer *s will be set to NULL. The
 caller must check that *s is valid.
 
-### What IS supported
+### What IS Supported
 - All integer conversion specifiers: d, i, o, u, x, and X.
 - The unsigned char specifier: c
 - The pointer specifier: p.
@@ -49,7 +49,7 @@ caller must check that *s is valid.
 - The % escape specifier: %.
 - Length modifiers: hh, h, l, ll, z.
 
-### What is NOT supported
+### What is NOT Supported
 - Floating point conversion specifiers: e, E (see below), f, F, g, G, a, A.
 - The number-of-characters specifier: n.
 - Wide characters.
@@ -106,7 +106,17 @@ snprintf (out_buf, length, "first_string");
 snprintf (out_buf, length, "second_string + %s", out_buf)
 out_buf --> "second_string + first_string"
 ```
+##### Example Stack Usage
+```C
+len = snprintf(obuf, 512, "%#llx in hex; %lld in decimal; %lle in scientific notation; %llE in engineering notation.", 0x1234567890abcdefll, 0x1234567890abcdefll, 0x1234567890abcdefll, 0x1234567890abcdefll);
+len --> 132, stack usage 792 bytes
 
+len = snprintf(obuf, 512, "The secret number is %d", 47);
+len --> 23, stack usage 312 bytes
+```
+
+
+### Compilation Target and Test
 The implementation is targeted at a 32-bit ARM architecture that supports
 long long (64 bit) data types, has a 32 x 32 = 32 multiplier and treats
 int and long as the same data type.
