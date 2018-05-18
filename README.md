@@ -14,7 +14,7 @@ if the buffer is unable to contain the entire string.
 A duplicate (non-standard) set of function calls is provided which will
 call a user-supplied memory allocation function once the string is constructed.
 This allows an exact-sized buffer to be used, ensuring the string will not
-be truncated without having to speculatively allocate a oversized buffer.
+be truncated without having to speculatively allocate an oversized buffer.
 
 A NULL buffer pointer may also be passed for the side effect of determining how
 long the string will be, without generating the actual string output.
@@ -55,7 +55,7 @@ caller must check that *s is valid.
 - Wide characters.
 - Any other specifier not explicitly supported.
 
-### Modifications and Extensions:
+### Modifications and Extensions
 The conversion specifiers e, E are supported, but for integer
 arguments in place of double. A length modifier may be associated
 with the argument.
