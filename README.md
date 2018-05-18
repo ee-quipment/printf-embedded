@@ -108,13 +108,12 @@ out_buf --> "second_string + first_string"
 ```
 ##### Example Stack Usage
 ```C
-len = snprintf(obuf, 512, "%#llx in hex; %lld in decimal; %lle in scientific notation; %llE in engineering notation.", 0x1234567890abcdefll, 0x1234567890abcdefll, 0x1234567890abcdefll, 0x1234567890abcdefll);
-len --> 132, stack usage 792 bytes
+total_chars = snprintf(out_buf, length, "%#llx in hex; %lld in decimal; %lle in scientific notation; %llE in engineering notation.", 0x1234567890abcdefll, 0x1234567890abcdefll, 0x1234567890abcdefll, 0x1234567890abcdefll);
+total_chars --> 132, stack usage 792 bytes
 
-len = snprintf(obuf, 512, "The secret number is %d", 47);
-len --> 23, stack usage 312 bytes
+total_chars = snprintf(out_buf, length, "The secret number is %d", 47);
+total_chars --> 23, stack usage 312 bytes
 ```
-
 
 ### Compilation Target and Test
 The implementation is targeted at a 32-bit ARM architecture that supports
